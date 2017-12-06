@@ -20,14 +20,14 @@ describe LinkedList do
   describe '#add_nodes' do
     it 'adds multiple nodes to the list' do
       list.add_nodes([4,5,6,7])
-      expect(list.return_list).to eq [4,4,5,6,7]
+      expect(list.return_list).to eq "4->4->5->6->7"
     end
   end
 
   describe '#return_list' do
     it 'prints the list in array form' do
       list.add_node(2)
-      expect(list.return_list).to eq [4, 2]
+      expect(list.return_list).to eq "4->2"
     end
   end
 
@@ -35,7 +35,7 @@ describe LinkedList do
     it 'removes any duplicate values from the list' do
       list.add_nodes([4,4,6,7,6,5,5])
       list.delete_duplicates
-      expect(list.return_list).to eq [4,6,7,5]
+      expect(list.return_list).to eq "4->6->7->5"
     end
   end
 

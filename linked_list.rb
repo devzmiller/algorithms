@@ -34,12 +34,17 @@ class LinkedList
       nodes << current.val
       current = current.next
     end
-    nodes
+    nodes.join("->")
+  end
+
+  def delete(val)
+    
   end
 
   # This doesn't work if numbers aren't next to each other. That may have been the original prompt for this method, but better to fix it.
   def delete_duplicates
     current = @head
+    node_hash = {} # store values in hash to check if they already exist
     while current
       if current.val == current.next.val
         current.next = current.next.next
