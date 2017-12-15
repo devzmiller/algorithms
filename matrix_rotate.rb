@@ -16,5 +16,5 @@ def rotate(matrix)
     j = 0
     i += 1
   end
-  p new_matrix
+  new_matrix
 end
