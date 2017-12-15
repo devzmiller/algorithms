@@ -73,3 +73,35 @@ def urlify(string)
   string
 end
 ```
+
+**Q: String compression. Given a string "aaabccdddd", the method should return "a3b1c2d4". If the compressed string isn't actually any shorter than the given string, return the given string instead.**
+
+Answer:
+	Using the shovel operator modifies the new_string in place, whereas += would copy it over to a new string, so shovel saves time/space.
+
+```ruby
+def string_compression(string)
+  new_string = ""
+  current_char = string[0]
+  count = 1
+  i = 1
+  while i < string.length
+    if string[i] == current_char
+      count += 1
+    else
+      new_string << current_char
+      new_string << count.to_s
+      current_char = string[i]
+      count = 1
+    end
+    i += 1
+  end
+  new_string << current_char
+  new_string << count.to_s
+  return string if string.length <= new_string.length
+  new_string
+end
+```
+
+Notes:
+	You forgot to add the final character and its count to the new_string. 
