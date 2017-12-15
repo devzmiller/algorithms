@@ -34,8 +34,7 @@ describe LinkedList do
   describe '#delete_duplicates' do
     it 'removes any duplicate values from the list' do
       list.add_nodes([4,4,6,7,6,5,5])
-      list.delete_duplicates
-      expect(list.return_list).to eq "4->6->7->5"
+      expect(list.delete_duplicates.return_list).to eq "4->6->7->5"
     end
   end
 
