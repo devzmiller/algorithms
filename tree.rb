@@ -32,15 +32,12 @@ class BSTree
   end
 
   def df_traversal(current = @root)
-    if current
-      if !current.left && !current.right
-        p current.value
-      else
-        df_traversal(current.left)
-        p current.value
-        df_traversal(current.right)
-      end
+    if current == nil
+      return
     end
+    df_traversal(current.left)
+    p current.value
+    df_traversal(current.right)
   end
 
 end
