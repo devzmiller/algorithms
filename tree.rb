@@ -40,6 +40,46 @@ class BSTree
     df_traversal(current.right)
   end
 
+  def bf_traversal
+    queue = Queue.new
+    queue.enq(@root)
+    while !queue.empty?
+      current = queue.deq
+      p current.value
+      if current.left
+        queue.enq(current.left)
+      end
+      if current.right
+        queue.enq(current.right)
+      end
+    end
+  end
+
+  def bf_array
+    current_queue = Queue.new
+    next_queue = Queue.new
+    current_queue.enq(@root)
+    arrays = []
+    current_array = []
+    while !current_queue.empty?
+      current = current_queue.deq
+      current_array << current.value
+      if current.left
+        next_queue.enq(current.left)
+      end
+      if current.right
+        next_queue.enq(current.right)
+      end
+      if current_queue.empty?
+        arrays << current_array
+        current_array = []
+        until next_queue.empty?
+          current_queue.enq(next_queue.deq)
+        end
+      end
+    end
+    arrays
+  end
 end
 
 class Node
