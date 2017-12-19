@@ -1,5 +1,5 @@
 class BSTree
-
+  attr_accessor :root
   def initialize(value)
     @root = Node.new(value)
   end
@@ -80,10 +80,19 @@ class BSTree
     end
     arrays
   end
+
+  def is_BST(current = @root, min = -1000000000, max = 1000000000)
+    if current == nil
+      return true
+    end
+    if current.value < min || current.value > max
+      return false
+    end
+    return is_BST(current.left, min, current.value) && is_BST(current.right, current.value, max)
+  end
 end
 
 class Node
-
   attr_accessor :value, :left, :right
 
   def initialize(value)
@@ -91,5 +100,17 @@ class Node
     @left = nil
     @right = nil
   end
-
 end
+
+t = BSTree.new(6)
+t.root.left = Node.new(3)
+t.root.left.right = Node.new(7)
+t.root.left.left = Node.new(1)
+t.root.right = Node.new(10)
+p t.is_BST
+bst = BSTree.new(6)
+t.root.left = Node.new(3)
+t.root.left.right = Node.new(4)
+t.root.left.left = Node.new(1)
+t.root.right = Node.new(10)
+p t.is_BST
