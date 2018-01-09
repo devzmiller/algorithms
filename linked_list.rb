@@ -76,7 +76,54 @@ end
 
 # METHODS
 
+def partition_ll(head, x)
+  current = head
 
+  while current != nil
+    if current.next == nil
+      tail = current
+    end
+    current = current.next
+  end
+  current = head
+  original_tail = tail
+  prev = nil
+  iteration = 1
+  new_head = nil
+  while current != nil
+    puts "iteration: #{iteration}"
+    puts "current: #{current.val}"
+    temp = current.next
+    if current.val >= x
+      tail.next = current
+      tail = current
+      tail.next = nil
+      puts "tail: #{tail.val}"
+      if current == head
+        new_head = temp
+      else
+        prev.next = temp
+      end
+    else
+      prev = current
+    end
+    if current == original_tail
+      current = nil
+    else
+      current = temp
+    end
+    puts "head: #{new_head.val}"
+    iteration += 1
+  end
+  return new_head
+end
+
+ll = LinkedList.new(7)
+ll.add_nodes([1, 5, 12, 4, 8])
+p "starting linked list is: "
+p ll
+p "partitioned linked list is: "
+p partition_ll(ll.head, 6)
 
 def reverse_list(head)
   previous = nil
